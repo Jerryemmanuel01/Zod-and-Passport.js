@@ -6,6 +6,8 @@ const Zod = () => {
     age: z.number().positive(),
   });
 
+  type User = z.infer<typeof schema>
+
   const data = {
     name: "John",
     age: 30,
