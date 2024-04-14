@@ -1,15 +1,22 @@
+import { z } from "zod";
 
 const Zod = () => {
-  return (
-    <div>
-git init
-git add .
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/Jerryemmanuel01/Zod-and-Passport.js.git
-git push -u origin main
-    </div>
-  )
-}
+  const schema = z.object({
+    name: z.string(),
+    age: z.number().positive(),
+  });
 
-export default Zod
+  const data = {
+    name: "John",
+    age: 30,
+  };
+
+  try {
+    const parsedData = schema.parse(data);
+    console.log("Data is valid:", parsedData);
+  } catch (error) {
+    console.error("Data is invalid:", error);
+  }
+};
+
+export default Zod;
